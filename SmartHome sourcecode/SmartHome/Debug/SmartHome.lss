@@ -614,7 +614,7 @@ void A_Alarm(void)
      650:	00 00       	nop
      652:	02 c0       	rjmp	.+4      	; 0x658 <A_Alarm+0x52>
 	_delay_ms(1000);
-	while(A_Cnt == 3)
+	while(A_Cnt >= 3)
 	{
 		H_Buzzer_On();
      654:	0e 94 bf 07 	call	0xf7e	; 0xf7e <H_Buzzer_On>
@@ -623,10 +623,10 @@ void A_Alarm(void)
 	H_Lcd_Clr();
 	H_Lcd_WriteString("Try Again");
 	_delay_ms(1000);
-	while(A_Cnt == 3)
+	while(A_Cnt >= 3)
      658:	80 91 9a 03 	lds	r24, 0x039A	; 0x80039a <A_Cnt>
      65c:	83 30       	cpi	r24, 0x03	; 3
-     65e:	d1 f3       	breq	.-12     	; 0x654 <A_Alarm+0x4e>
+     65e:	d0 f7       	brcc	.-12     	; 0x654 <A_Alarm+0x4e>
 	{
 		H_Buzzer_On();
 	}

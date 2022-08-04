@@ -695,7 +695,7 @@ void A_Alarm(void)
 	H_Lcd_Clr();
 	H_Lcd_WriteString("Try Again");
 	_delay_ms(1000);
-	while(A_Cnt == 3)
+	while(A_Cnt >= 3)
 	{
 		H_Buzzer_On();
 	}
